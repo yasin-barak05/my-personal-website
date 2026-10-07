@@ -1,0 +1,596 @@
+/* ==========================================
+   ۱. تنظیمات پایه و ریست کردن مرورگر
+   ========================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #121212; /* پس‌زمینه مشکی تیره و یکدست */
+  color: #ffffff; /* رنگ متن‌های اصلی جهت خوانایی بالا */
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ==========================================
+   ۲. استایل دکمه‌های عمومی (Buttons)
+   ========================================== */
+.btn-primary {
+  background-color: #fd6f22; /* رنگ نارنجی شارپ و جذاب طرح فیگما */
+  color: white;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: 0.3s ease;
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #e55a10;
+}
+
+.btn-secondary {
+  border: 2px solid #ffffff; /* حاشیه سفید دور دکمه دانلود رزومه */
+  color: #ffffff;
+  padding: 10px 26px;
+  border-radius: 8px;
+  font-weight: 600;
+  background: transparent;
+  transition: 0.3s ease;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background-color: #ffffff;
+  color: #121212; /* برعکس شدن رنگ‌ها هنگام هاور */
+}
+
+/* ==========================================
+   ۳. هدر سایت (Header)
+   ========================================== */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 8%;
+  background: #121212;
+  border-bottom: 1px solid #252525; /* خط بسیار ملایم زیر منو */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #fd6f22; /* لوگو با رنگ نارنجی */
+}
+
+.nav-menu a {
+  margin: 0 15px;
+  font-weight: 500;
+  color: #aaaaaa; /* رنگ خاکستری ملایم منو در حالت عادی */
+  transition: 0.3s;
+}
+
+.nav-menu a:hover {
+  color: #fd6f22; /* تغییر رنگ به نارنجی هنگام هاور */
+}
+
+/* ==========================================
+   ۴. بخش هیرو یا معرفی اصلی (Hero Section)
+   ========================================== */
+.hero-section {
+  padding: 80px 8%;
+  background: #121212;
+}
+
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.hero-left {
+  flex: 1;
+}
+
+.hero-intro h4 {
+  font-size: 28px;
+  color: #ffffff;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.hero-intro h1 {
+  font-size: 54px;
+  color: #fd6f22; /* عنوان شغل (Full-Stack Developer) به رنگ نارنجی */
+  margin-bottom: 25px;
+  font-weight: 800;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 35px;
+}
+
+.social-icons img {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  transition: 0.3s;
+  filter: brightness(0) invert(1); /* سفید کردن آیکون‌های شبکه اجتماعی برای هماهنگی با تم دارک */
+}
+
+.social-icons img:hover {
+  transform: translateY(-3px);
+  filter: none; /* برگشتن به رنگ اصلی آیکون در حالت هاور */
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 45px;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 0; /* فاصله معمولی را صفر می‌کنیم چون با پدینگ فاصله ایجاد خواهیم کرد */
+  margin-top: 35px;
+  align-items: center;
+}
+
+.stat-box {
+  padding: 0 30px; /* ایجاد فاصله از چپ و راست برای خطوط جداکننده */
+}
+
+/* حذف پدینگ سمت چپ برای اولین آیتم تا با متن‌های بالا تراز شود */
+.stat-box:first-child {
+  padding-left: 0;
+}
+
+/* ایجاد خط عمودی جداکننده برای آیتم‌ها به جز آیتم آخر */
+.stat-box:not(:last-child) {
+  border-right: 1px solid #333333; /* خط عمودی خاکستری ملایم مطابق تصویر */
+}
+
+/* تغییر رنگ اعداد آمار به نارنجی جذاب فیگما */
+.stat-box h1,
+.stat-box h2 {
+  font-size: 32px;
+  color: #fd6f22; /* رنگ نارنجی برای اعداد */
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+
+/* استایل متن زیر اعداد */
+.stat-box p {
+  color: #ffffff; /* رنگ سفید برای متن‌ها مطابق تصویر جدید */
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.avatar-bg {
+  background: #1c1c1c; /* رنگ دایره بزرگ پشت عکس که کمی از پس‌زمینه روشن‌تر است */
+  border-radius: 50%;
+  width: 420px;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.avatar-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* ==========================================
+   ۵. تنظیمات عمومی عناوین سکشن‌ها
+   ========================================== */
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-header h2,
+.section-header h1 {
+  font-size: 38px;
+  margin-bottom: 15px;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.section-header p {
+  color: #888888;
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 15px;
+}
+
+/* ==========================================
+   ۶. بخش خدمات (Services)
+   ========================================== */
+.services-section {
+  padding: 80px 8%;
+  background: #121212;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.service-card {
+  background: #1c1c1c; /* پس‌زمینه دودی کارت‌ها مطابق فیگما */
+  padding: 40px 30px;
+  border-radius: 16px; /* لبه‌های کاملاً گرد کارت‌ها */
+  transition: 0.3s ease;
+  text-align: center;
+  border: 1px solid #252525;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  border-color: #fd6f22; /* تغییر رنگ حاشیه به نارنجی هنگام حرکت ماوس */
+}
+
+.service-card img {
+  width: 45px;
+  margin: 0 auto 20px;
+  filter: brightness(0) invert(1) sepia(1) saturate(5000%) hue-rotate(345deg); /* نارنجی کردن آیکون خدمات با فیلتر سی‌اس‌اس */
+}
+
+.service-card h2 {
+  color: #fd6f22; /* عنوان خدمات به رنگ نارنجی */
+  font-size: 22px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.service-card p {
+  color: #aaaaaa;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* ==========================================
+   ۷. بخش درباره من (About Me)
+   ========================================== */
+.about-section {
+  padding: 80px 8%;
+  background: #121212;
+}
+
+.about-container {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  margin-bottom: 60px;
+}
+
+.about-content {
+  flex: 1;
+}
+
+.about-content p {
+  margin-bottom: 30px;
+  color: #cccccc;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.about-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.about-image img {
+  width: 380px;
+  border-radius: 20px;
+  background: #1c1c1c;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 25px;
+  text-align: center;
+}
+
+.skill-card {
+  background: #1c1c1c;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #252525;
+}
+
+.skill-card img {
+  width: 45px;
+  margin: 0 auto 15px;
+}
+
+.skill-card h2 {
+  color: #fd6f22;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.skill-card p {
+  color: #ffffff;
+  font-size: 15px;
+}
+
+/* ==========================================
+   ۸. بخش نمونه کارها (Portfolio)
+   ========================================== */
+.portfolio-section {
+  padding: 80px 8%;
+  background: #121212;
+}
+
+.portfolio-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.portfolio-header h2 {
+  font-size: 38px;
+  font-weight: 700;
+}
+
+.portfolio-tabs {
+  display: flex;
+  gap: 12px;
+}
+
+.tab-btn {
+  background: #1c1c1c;
+  border: 1px solid #333333;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.tab-btn.active,
+.tab-btn:hover {
+  background: #fd6f22;
+  color: white;
+  border-color: #fd6f22;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.portfolio-card {
+  background: #1c1c1c;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #252525;
+  transition: 0.3s;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-5px);
+  border-color: #fd6f22;
+}
+
+.portfolio-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+.card-title {
+  padding: 20px;
+  text-align: center;
+}
+
+.card-title h3 {
+  font-size: 18px;
+  color: #ffffff;
+}
+
+/* ==========================================
+   ۹. فرم ارتباط (Contact Form)
+   ========================================== */
+.contact-section {
+  padding: 80px 8%;
+  background: #121212;
+}
+
+.contact-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full-width {
+  grid-column: span 2;
+}
+
+.form-group label {
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #aaaaaa;
+}
+
+.form-group input,
+.form-group select {
+  padding: 14px;
+  border: 1px solid #333333;
+  border-radius: 8px;
+  background: #1c1c1c; /* رنگ دودی داخل فیلدهای فرم */
+  color: #ffffff;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #fd6f22; /* نارنجی شدن حاشیه فیلد هنگام کلیک */
+}
+
+.btn-container {
+  align-items: center;
+  margin-top: 15px;
+}
+
+.btn-submit {
+  background: #fd6f22;
+  color: white;
+  border: none;
+  padding: 14px 50px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-submit:hover {
+  background: #e55a10;
+}
+
+/* ==========================================
+   ۱۰. فوتر سایت (Footer)
+   ========================================== */
+.site-footer {
+  background: #0b0b0b; /* رنگ مشکی کمی تیره‌تر از پس‌زمینه اصلی برای فوتر */
+  color: white;
+  padding: 60px 8% 25px;
+  border-top: 1px solid #1c1c1c;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 35px;
+}
+
+.footer-nav a {
+  margin-left: 25px;
+  color: #aaaaaa;
+  transition: 0.3s;
+}
+
+.footer-nav a:hover {
+  color: #fd6f22;
+}
+
+.footer-middle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 45px;
+}
+
+.footer-contact-info a {
+  margin-left: 30px;
+  color: #aaaaaa;
+  transition: 0.3s;
+}
+
+.footer-contact-info a:hover {
+  color: #fd6f22;
+}
+
+.footer-divider {
+  border: 0;
+  height: 1px;
+  background: #222222;
+  margin-bottom: 25px;
+}
+
+.footer-bottom {
+  text-align: center;
+  color: #555555;
+  font-size: 14px;
+}
+
+/* ==========================================
+   ۱۱. واکنش‌گرایی برای صفحات کوچک و موبایل (Responsive)
+   ========================================== */
+@media (max-width: 768px) {
+  .site-header,
+  .hero-container,
+  .about-container,
+  .portfolio-header,
+  .footer-top,
+  .footer-middle {
+    flex-direction: column;
+    text-align: center;
+    gap: 25px;
+  }
+  .nav-menu a {
+    display: inline-block;
+    margin: 8px 12px;
+  }
+  .portfolio-tabs {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .contact-form {
+    grid-template-columns: 1fr;
+  }
+  .form-group.full-width {
+    grid-column: span 1;
+  }
+  .avatar-bg {
+    width: 300px;
+    height: 300px;
+  }
+  .hero-stats {
+    justify-content: center;
+    gap: 25px;
+  }
+  .footer-nav a,
+  .footer-contact-info a {
+    display: block;
+    margin: 12px 0;
+    margin-left: 0;
+  }
+}
